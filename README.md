@@ -32,5 +32,5 @@ create_subfolder:
 
 ## Contributors
 
-Reece Vela
+Reece Vela  - [Github](https://github.com/reecevela)  
 Others welcome!

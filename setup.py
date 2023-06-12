@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='gh_subdir',
-    version='0.1.9',
+    version='1.0.1',
     description='A Python module for installing GitHub subdirectories.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
