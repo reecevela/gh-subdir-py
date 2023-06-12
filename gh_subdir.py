@@ -5,6 +5,7 @@ class gh_subdir:
     def __init__(self, config):
         self.owner = config["owner"]
         self.repo = config["repo"]
+        self.encoding = config["encoding"] if "encoding" in config else "utf-8"
         self.create_subfolder = config["create_subfolder"] if "create_subfolder" in config else True
 
     def download(self, base_path, path=''):
@@ -36,10 +37,10 @@ class gh_subdir:
 
             if self.create_subfolder:
                 os.makedirs(base_path + '/' + relative_path, exist_ok=True)
-                with open(base_path + '/' + relative_path + '/' + url.split('/')[-1], write_mode) as file:
+                with open(base_path + '/' + relative_path + '/' + url.split('/')[-1], write_mode, encoding=self.encoding) as file:
                     file.write(content)
             else:
-                with open(url.split('/')[-1], write_mode) as file:
+                with open(url.split('/')[-1], write_mode, encoding=self.encoding) as file:
                     file.write(content)
 
 #Example Usage:
