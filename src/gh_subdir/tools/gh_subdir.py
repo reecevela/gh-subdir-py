@@ -35,10 +35,13 @@ class gh_subdir:
                 write_mode = 'wb'
                 content = response.content
 
-            if self.create_subfolder:
-                os.makedirs(base_path + '/' + relative_path, exist_ok=True)
-                with open(base_path + '/' + relative_path + '/' + url.split('/')[-1], write_mode, encoding=self.encoding) as file:
-                    file.write(content)
-            else:
-                with open(url.split('/')[-1], write_mode, encoding=self.encoding) as file:
-                    file.write(content)
+            try:
+                if self.create_subfolder:
+                    os.makedirs(base_path + '/' + relative_path, exist_ok=True)
+                    with open(base_path + '/' + relative_path + '/' + url.split('/')[-1], write_mode, encoding=self.encoding) as file:
+                        file.write(content)
+                else:
+                    with open(url.split('/')[-1], write_mode, encoding=self.encoding) as file:
+                        file.write(content)
+            except Exception as e:
+                print(f"Failed to download {url}: {e}")
